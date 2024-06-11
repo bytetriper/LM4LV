@@ -1,0 +1,36 @@
+encoder:
+  target: model.vision_modules.VQ_Encoder
+  params:
+    config_path: /cpfs01/user/zhengboyang/model_zoo/vq-f16-n256-v16384/config.yaml
+    ckpt_path: /cpfs01/user/zhengboyang/model_zoo/vq-f16-n256-v16384/model.ckpt
+    quantize: False
+    reshape: [1,16,16]
+    im_size: 256
+
+#adapter:
+#  target: model.encoders.Embedding_Adapter
+#  params:
+#    num_embeddings: 16384
+#    embedding_dim: 4096
+adapter:
+  target: model.vision_modules.Linear_Adapter
+  params:
+    in_features: 256
+    out_features: 4096
+deadapter:
+  target: model.vision_modules.Linear_Adapter
+  params:
+    in_features: 4096
+    out_features: 256
+decoder:
+  target: model.vision_modules.VQ_Decoder
+  params:
+    config_path: ../../model_zoo/vq-f16-n256-v16384/config.yaml
+    ckpt_path: ../../model_zoo/vq-f16-n256-v16384/model.ckpt
+    im_size: 256
+    reshape: [16,16]
+vision_loss:
+  target: model.losses.MAE_FeatLoss
+  params:
+    num_vision_tokens: 197
+  

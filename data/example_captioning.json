@@ -1,0 +1,82 @@
+[
+    {
+        "image": [
+            "/dataset/LLAVA595k/images/GCC_train_002582585.jpg"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\n"
+            },
+            {
+                "from": "gpt",
+                "value": "A picture of olive oil is a healthy ingredient used liberally ."
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "/dataset/LLAVA595k/images/GCC_train_002429825.jpg"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\n"
+            },
+            {
+                "from": "gpt",
+                "value": "A picture of 3d vector deluxe alphabet of randomly rotated thin golden symbols ."
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "/dataset/LLAVA595k/images/GCC_train_000190697.jpg"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\n"
+            },
+            {
+                "from": "gpt",
+                "value": "A picture of weathering -- the physical & chemical breakdown of rocks ."
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "/dataset/LLAVA595k/images/GCC_train_002503829.jpg"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\n"
+            },
+            {
+                "from": "gpt",
+                "value": "A picture of fans interferes with # on a ball hit by # of sports team scoring runs in the eighth inning during game"
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "/dataset/LLAVA595k/images/GCC_train_000530863.jpg"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\n"
+            },
+            {
+                "from": "gpt",
+                "value": "A picture of train that takes you around the perimeter"
+            }
+        ],
+        "task_type": "conversation"
+    }
+]

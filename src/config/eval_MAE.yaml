@@ -1,0 +1,28 @@
+# ========= Global configuration ========== #
+logging_step: 25
+# ========= Global configuration ========== #
+
+# some train configuration, more can be found under dsconfig folder
+seed: 0
+warmup_rate: 0.1
+epochs: 28
+max_shard_size: 10GB
+
+# deepspeed arguments
+deepspeed:
+  train_batch_size: 256
+  train_micro_batch_size_per_gpu: 256
+  gradient_accumulation_steps: 1
+  gradient_clipping: 1.0
+  steps_per_print: 1
+
+  fp16:
+    enabled: false
+    #min_loss_scale: 1
+    #opt_level: O2
+  
+  bf16:
+    enabled: true
+    min_loss_scale: 1
+    opt_level: O2
+

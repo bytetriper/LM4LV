@@ -1,0 +1,103 @@
+models:
+  lamm:
+      model_name: LAMMModel
+      agent_name: DeepSpeedAgent
+      stage1_train_dataset: LM4LVDataset
+
+  lamm_peft:
+      model_name: LM4LVPEFTModel
+      agent_name: DeepSpeedAgent
+      stage1_train_dataset: LM4LVDataset
+
+# ========= Global configuration ========== #
+logging_step: 5
+# ========= Global configuration ========== #
+
+# generation hyper-parameters
+max_len: 512
+penalty_alpha: 0.6
+top_k: 10
+top_p: 0.7
+random_prefix_len: 5
+sample_num: 2
+decoding_method: sampling
+generate_len: 512
+# some train configuration, more can be found under dsconfig folder
+seed: 0
+warmup_rate: 0.1
+epochs: 2
+max_length: 1024
+max_shard_size: 10GB
+
+# lora hyper-parameters
+lora_r: 1
+lora_alpha: 0
+lora_dropout: 0.1
+lora_target_modules: ['q_proj', 'k_proj', 'v_proj', 'o_proj']
+
+# deepspeed arguments
+deepspeed:
+  train_batch_size: 256
+  train_micro_batch_size_per_gpu: 16
+  gradient_accumulation_steps: 4
+  gradient_clipping: 1.0
+  steps_per_print: 1
+
+  zero_optimization:
+    stage: 3
+    contiguous_gradients: true
+    overlap_comm: true
+    contiguous_gradients: true
+    reduce_bucket_size: 5.0e+08
+    # reduce_bucket_size: auto
+    stage3_prefetch_bucket_size: 1.0e+08
+    # stage3_prefetch_bucket_size: auto
+    stage3_param_persistence_threshold: 5.0e+05
+    # stage3_param_persistence_threshold: auto
+    sub_group_size: 2.0e+08
+    stage3_max_live_parameters: 1.0e+08
+    stage3_max_reuse_distance: 1.0e+08
+    stage3_gather_16bit_weights_on_model_save: true
+    offload_optimizer:
+      device: cpu
+      pin_memory: true
+    offload_param:
+      device: cpu
+      pin_memory: true
+
+  optimizer:
+    type: Adam
+    params:
+      betas:
+      - 0.9
+      - 0.95
+      eps: 1.0e-08
+      lr: 3.0e-4
+      weight_decay: 0
+      #gradient_clipping: 1.0
+    
+  scheduler:
+    type: WarmupDecayLR
+    params:
+      total_num_steps: 20000
+      warmup_max_lr: 3.0e-4
+      warmup_min_lr: 0
+      warmup_num_steps: 200
+
+  fp16:
+    enabled: false
+    #min_loss_scale: 1
+    #opt_level: O2
+  
+  bf16:
+    enabled: true
+    min_loss_scale: 1
+    opt_level: O2
+
+  activation_checkpointing:
+    partition_activations: true
+    cpu_checkpointing: true
+    contiguous_memory_optimization: false
+    number_checkpoints: null
+    synchronize_checkpoint_boundary: false
+    profile: false

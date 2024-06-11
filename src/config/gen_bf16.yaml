@@ -1,0 +1,55 @@
+models:
+  lamm:
+      model_name: LAMMModel
+      agent_name: DeepSpeedAgent
+      stage1_train_dataset: LM4LVDataset
+  lamm_peft:
+      model_name: LM4LVPEFTModel
+      agent_name: DeepSpeedAgent
+      stage1_train_dataset: LM4LVDataset
+
+# ========= Global configuration ========== #
+logging_step: 25
+# ========= Global configuration ========== #
+# some train configuration, more can be found under dsconfig folder
+seed: 0
+warmup_rate: 0.1
+epochs: 1
+max_length: 1024
+max_shard_size: 10GB
+
+# lora hyper-parameters
+lora_r: 1
+lora_alpha: 0
+lora_dropout: 0.
+lora_target_modules: ['q_proj', 'k_proj', 'v_proj', 'o_proj']
+
+# deepspeed arguments
+deepspeed:
+  train_batch_size: 4
+  train_micro_batch_size_per_gpu: 1
+  gradient_accumulation_steps: 1
+  gradient_clipping: 1.0
+  steps_per_print: 1
+
+  zero_optimization:
+    allgather_bucket_size: 500000000
+    allgather_partitions: true
+    contiguous_gradients: true
+    offload_optimizer:
+      device: cpu
+    stage: 1
+
+  
+  bf16:
+    enabled: true
+    min_loss_scale: 1
+    opt_level: O2
+
+  activation_checkpointing:
+    partition_activations: true
+    cpu_checkpointing: true
+    contiguous_memory_optimization: false
+    number_checkpoints: null
+    synchronize_checkpoint_boundary: false
+    profile: false

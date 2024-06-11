@@ -1,0 +1,16 @@
+dataset/
+images/
+ckpt/
+*.pyc
+src/__pycache__/
+ckpt/
+src/*.jpg
+src/*.png
+src/exps
+vis/
+src/test/
+src/plots/
+src/*.ipynb
+*/__pycache__/
+ckpt/
+process_dataset.py

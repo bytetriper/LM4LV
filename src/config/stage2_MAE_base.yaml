@@ -1,0 +1,26 @@
+encoder:
+  target: model.vision_modules.MAE_Encoder
+  params:
+    ckpt_path: '../../zhengboyang/model_zoo/mae_base'
+
+adapter:
+  target: model.vision_modules.Linear_Adapter
+  params:
+    in_features: 768
+    out_features: 4096
+
+deadapter:
+  target: model.vision_modules.Linear_Adapter
+  params:
+    in_features: 4096
+    out_features: 768
+  
+vision_loss:
+  target: model.losses.Feat_MSELoss
+  params:
+    num_vision_tokens: 197
+  
+decoder:
+  target: model.vision_modules.MAE_Decoder
+  params:
+    ckpt_path: '../../model_zoo/mae_base'

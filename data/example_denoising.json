@@ -1,0 +1,87 @@
+[
+    {
+        "image": [
+            "dataset/LLAVA595k/images_noise/0_0.png",
+            "dataset/LLAVA595k/images_png/0.png"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image> <task>"
+            },
+            {
+                "from": "gpt",
+                "value": "<image>"
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "dataset/LLAVA595k/images_noise/0_1.png",
+            "dataset/LLAVA595k/images_png/1.png"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image> <task>"
+            },
+            {
+                "from": "gpt",
+                "value": "<image>"
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "dataset/LLAVA595k/images_noise/0_2.png",
+            "dataset/LLAVA595k/images_png/2.png"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image> <task>"
+            },
+            {
+                "from": "gpt",
+                "value": "<image>"
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "dataset/LLAVA595k/images_noise/0_3.png",
+            "dataset/LLAVA595k/images_png/3.png"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image> <task>"
+            },
+            {
+                "from": "gpt",
+                "value": "<image>"
+            }
+        ],
+        "task_type": "conversation"
+    },
+    {
+        "image": [
+            "dataset/LLAVA595k/images_noise/0_4.png",
+            "dataset/LLAVA595k/images_png/4.png"
+        ],
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image> <task>"
+            },
+            {
+                "from": "gpt",
+                "value": "<image>"
+            }
+        ],
+        "task_type": "conversation"
+    }
+]

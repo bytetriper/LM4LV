@@ -1,0 +1,12 @@
+[submodule "src/lightllm"]
+	path = src/lightllm
+	url = https://github.com/ModelTC/lightllm/tree/main
+[submodule "src/src/taming-transformers"]
+	path = src/src/taming-transformers
+	url = https://github.com/CompVis/taming-transformers
+[submodule "lightllm"]
+	path = lightllm
+	url = https://github.com/ModelTC/lightllm
+[submodule "src/moco-v3"]
+	path = src/moco-v3
+	url = https://github.com/facebookresearch/moco-v3

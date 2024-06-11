@@ -1,0 +1,28 @@
+encoder:
+  target: model.vision_modules.BEiT_Encoder
+  params:
+    feature_type: local
+    ckpt_path: '../../model_zoo/BEiT'
+
+adapter:
+  target: model.vision_modules.Linear_Adapter
+  params:
+    in_features: 1024
+    out_features: 4096
+  
+deadapter:
+  target: model.vision_modules.Linear_Adapter
+  params:
+    in_features: 4096
+    out_features: 1024
+
+vision_loss:
+  target: model.losses.MAE_FeatLoss
+  params:
+    num_vision_tokens: 197
+
+decoder:
+  target: model.vision_modules.BEiT_Decoder
+  params:
+    ckpt_path: '../../model_zoo/BEiT'
+    dalle_decoder_path: '../../model_zoo/BEiT/dalle/decoder.pkl'
