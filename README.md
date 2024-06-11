@@ -18,7 +18,7 @@ Then install the packages required.
 install torch > 2.0 according to your cuda version 
 pip install -r requirements.txt
 ```
-We use [DeepSpeed](https://github.com/microsoft/DeepSpeed) as the infrasturcture of all training and inference. Please assure that the DeepSpeed version > 0.92.
+We use [DeepSpeed](https://github.com/microsoft/DeepSpeed) as the infrasturcture of all training and inference. Please assure that the DeepSpeed version > 0.92. If you don't know much about how to use DeepSpeed, see the [tutorial](https://www.deepspeed.ai/getting-started/).
 
 ### Data & Model
 #### Models 
