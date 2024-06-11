@@ -60,7 +60,7 @@ In the training of LM4LV, a slice of data look like this:
     ]
 }
 ```
-The `vision_paths` is a list that contains the path to images. Please include the **absolute path to the images.**
+The `image` is a list that contains the path to images. Please include the **absolute path to the images.**
 
 In generation, we still adopt the same format as training but cancel the response of `gpt`:
 
