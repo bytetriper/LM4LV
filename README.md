@@ -113,7 +113,7 @@ The DeepSpeed training configuration is stored in `src/config/train_bf16.yaml`. 
 We only test the pipeline of LM4LV using deepspeed stage 1 (DDP). Theoretically it should work with other stages but we do not guarantee the outcome. There is a stage 3 config in `src/config/train_ds3.yaml` if you want to try.
 
 ##### Training ♻️
-For a default setup of 4 NVIDIA GPUS, simply run the script:
+For a default setup of 4 NVIDIA GPUs, simply run the script:
 
 ```bash
 cd src/ 
@@ -129,7 +129,7 @@ The logs, configurations and models will be save in `../ckpt/$EXP_NAME/`. `$VISI
 
 ##### Inference 🏃‍♂️
 
-For a default setup of 4 NVIDIA GPUS, simply run the script:
+For a default setup of 4 NVIDIA GPUs, simply run the script:
 
 ```bash
 cd src/
@@ -145,7 +145,7 @@ The generated images would be saved in `../ckpt/$EXP_NAME/images/`.
 
 All parameters are default to be frozen except for the task token (always trainable). To enable LoRA-finetuning, add `--lora_enable` in the script. To enable vision module training, add `--train_adapter , --train_deadpater, --train_encoder, --train_decoder` for training the corresponding modules.
 
-For more costomizations, please see `src/train.py` and `src/batch_generate.py` for more details.
+For more costomizations, please see `src/train.py` and `src/batch_generate.py` for more details. This script runs well on 4xA100 80G GPUs. If you're using other GPUs, you may need to adjust the batch size accordingly.
 
 ### Evaluation 🕐
 
@@ -186,9 +186,12 @@ This script seems to only support single-GPU now.
 
 LM4LV also provides enough freedom to change the vision modules, adapters and vision loss easily. We decouple those components from our main pipeline, allowing one to develop new type of vision modules by simply defining a class that follows specific interfaces. See `src/model/vision_modules.py` and `src/model/losses.py` for calling conventions.
 
-We provide a variety of vision encoders/decoders and adapters in `/model/vision_modules.py`. You can use them simply by changing the vision configuration. We provide two examples of using BEiT and VQGAN in `src/config/stage2_BEiT.yaml` and `src/config/stage2_vqvan.yaml` respectively. 
+We provide a variety of vision encoders/decoders and adapters in `src/model/vision_modules.py`. You can use them simply by changing the vision configuration. We provide two examples of using BEiT and VQGAN in `src/config/stage2_BEiT.yaml` and `src/config/stage2_vqvan.yaml` respectively. 
 
-LM4LV pipeline can also be used for normal vision-language tasks. We provide a training script in `src/train_LLAVA_stage1.sh` and `src/train_LLAVA_stage2.sh`. In vision-language tasks, we often mask a prefix of the model's response in addition to instruction-tuning. For example, [LimBER](https://arxiv.org/abs/2209.15162) add 'a picture of' in the beginning of the response and do not calculate loss on it. We support this by adding a commandline parameter `--gpt_prefix`, which will add the user-specified prefix to every gpt response in the data.
+LM4LV pipeline can also be used for normal vision-language tasks. We provide a training script in `src/scripts/train_LLAVA_stage1.sh` and `src/scripts/train_LLAVA_stage2.sh`. In vision-language tasks, we often mask a prefix of the model's response in addition to instruction-tuning. For example, [LimBER](https://arxiv.org/abs/2209.15162) add 'a picture of' in the beginning of the response and do not calculate loss on it. We support this by adding a commandline parameter `--gpt_prefix`, which will add the user-specified prefix to every gpt response in the data.
+
+### Acknowledgement 😙
+A large portion of this codebase is based on the [OPENLAMM](https://github.com/OpenGVLab/LAMM), thanks to the authors for their great work. We also use [taming](https://github.com/CompVis/taming-transformers) and [basicsr](https://github.com/XPixelGroup/BasicSR) for the vision modules and evaluation.
 
 ### Citation
 💓If you find this work helpful, please consider citing:
