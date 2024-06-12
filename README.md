@@ -159,7 +159,9 @@ If two images are identical, we set the PSNR to be 100 to avoid overflow.
 
 ### Finetuning MAE 👉
 
-If you're interested in fine-tuning the MAE, we also provide the script and code for fine-tuning MAE for image reconstruction. Simply run:
+If you're interested in fine-tuning the MAE, we also provide the script and code for fine-tuning MAE for image reconstruction. By default, we use $\Vert x - MAE(x) \Vert_1 + \lambda\cdot \text{LPIPS}(x, MAE(x)),\lambda = 1$ as the loss function. 
+
+ Simply run:
 
 ```bash
 ./scripts/ftMAE.sh $EXP_NAME \
