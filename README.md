@@ -1,8 +1,14 @@
 # LM4LV: A Frozen LLM for Low-level Vision
-
+[![Paper](https://img.shields.io/badge/Paper-ArXiv-red.svg)](https://arxiv.org/abs/2405.15734)
 🙋 **This is the official PyTorch implementation for "LM4LV: A Frozen Large Language Model for Low-level Vision Tasks"**
 
+
 ![Main pipeline of LM4LV](assets/main_structure_wencode.png)
+
+
+### What for ?
+
+This codebase can be used for reproducing results in the [paper](https://arxiv.org/abs/2405.15734). Also it can be used for free-form general language-vision task with LLM, say, image captioning or text-to-image generation. You can define vision encoder, decoder and adapters freely by defining simple python classes with specific interfaces. We also support LLM LoRA finetuning.
 ### Environment Setup
 To begin, create a new conda environment:
 
@@ -161,7 +167,7 @@ If two images are identical, we set the PSNR to be 100 to avoid overflow.
 
 If you're interested in fine-tuning the MAE, we also provide the script and code for fine-tuning MAE for image reconstruction. By default, we use $\Vert x - MAE(x) \Vert_1 + \lambda\cdot \text{LPIPS}(x, MAE(x)),\lambda = 1$ as the loss function. 
 
- Simply run:
+Simply run:
 
 ```bash
 ./scripts/ftMAE.sh $EXP_NAME \
