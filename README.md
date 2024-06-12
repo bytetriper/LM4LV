@@ -31,7 +31,7 @@ from transformers import ViTMAEForPreTraining
 model = ViTMAEForPreTraining.from_pretrained('$MODEL-FOLDER')
 ```
 
-😭We currently do not support other non-llama LLMs  it requires specific modifications to the LLM code implementation. If you need to use other LLMs, create a new file for your LLM following the implementation of `src/model/modeling_llama.py`. We do not make additional changes to the original implementation except by changing the forward funtion to avoid calculating the cross entropy loss on vision tokens.
+😭We currently do not support other non-llama LLMs as it requires specific modifications to the LLM code implementation. If you need to use other LLMs, create a new file for your LLM following the implementation of `src/model/modeling_llama.py` and modify the main code when loading LLM. We do not make additional changes to the original implementation except by changing the forward funtion to avoid calculating the cross entropy loss on vision tokens.
 #### Data
 
 ##### Datasets
