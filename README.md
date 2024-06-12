@@ -3,7 +3,7 @@
 🙋 **This is the official PyTorch implementation for "LM4LV: A Frozen Large Language Model for Low-level Vision Tasks"**
 
 ![Main pipeline of LM4LV](assets/main_structure_wencode.png)
-### Experiment Setup
+### Environment Setup
 To begin, create a new conda environment:
 
 ```bash
@@ -15,7 +15,7 @@ or simply make sure you have a python 3.10 installed in current environment.
 Then install the packages required.
 
 ```
-install torch > 2.0 according to your cuda version 
+install torch , torchvision , torchaudio > 2.0 according to your cuda version (we use torch 2.2.0)
 pip install -r requirements.txt
 ```
 We use [DeepSpeed](https://github.com/microsoft/DeepSpeed) as the infrasturcture of all training and inference. Please assure that the DeepSpeed version > 0.92. If you don't know much about how to use DeepSpeed, see the [tutorial](https://www.deepspeed.ai/getting-started/).
